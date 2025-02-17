@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# MongoDB local data
+data/
+
+# Build output
+dist/
+build/
+
+# Coverage reports
+coverage/
+
+# OS & IDE generated files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
