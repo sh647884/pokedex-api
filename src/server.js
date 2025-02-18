@@ -1,4 +1,6 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -6,7 +8,13 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Préfixe global pour les routes API
+mongoose.connect("mongodb://localhost:27017/pokedex").then(() => {
+    console.log("Connected to MongoDB");
+});
+
+// Définition des routes
+app.use("/api/auth", authRoutes);
+
 const apiRouter = express.Router();
 app.use("/api", apiRouter);
 
