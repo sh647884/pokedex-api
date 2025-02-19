@@ -1,5 +1,6 @@
 const express = require("express");
 const { checkRole, authenticateToken, ROLES } = require("../middlewares/authMiddleware");
+const pkmnController = require("../controllers/pkmnController");
 
 const router = express.Router();
 
@@ -17,5 +18,14 @@ router.get("/protected", authenticateToken, (req, res) => {
 router.get("/admin", authenticateToken, checkRole(ROLES.ADMIN), (req, res) => {
     res.json({ message: "Accessible by admins only" });
 });
+
+// Routes Pokémon
+router.post("/", authenticateToken, pkmnController.create);
+router.post("/region", authenticateToken, checkRole(ROLES.ADMIN), pkmnController.addRegion);
+router.get("/search", authenticateToken, pkmnController.search);
+router.get("/", authenticateToken, pkmnController.getOne);
+router.put("/", authenticateToken, checkRole(ROLES.ADMIN), pkmnController.update);
+router.delete("/", authenticateToken, checkRole(ROLES.ADMIN), pkmnController.remove);
+router.delete("/region", authenticateToken, checkRole(ROLES.ADMIN), pkmnController.removeRegion);
 
 module.exports = router;
