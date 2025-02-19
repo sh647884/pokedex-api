@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const pkmnRoutes = require("./routes/pkmnRoutes");
 
 const app = express();
 
@@ -14,6 +15,7 @@ mongoose.connect("mongodb://localhost:27017/pokedex").then(() => {
 
 // Définition des routes
 app.use("/api/auth", authRoutes);
+app.use("/api/pkmn", pkmnRoutes);
 
 const apiRouter = express.Router();
 app.use("/api", apiRouter);
