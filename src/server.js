@@ -1,8 +1,11 @@
 const express = require("express");
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const pkmnRoutes = require("./routes/pkmnRoutes");
 const trainerRoutes = require("./routes/trainerRoutes");
+const docsRoutes = require("./routes/docsRoutes");
 
 const app = express();
 
@@ -18,6 +21,10 @@ mongoose.connect("mongodb://localhost:27017/pokedex").then(() => {
 app.use("/api/auth", authRoutes);
 app.use("/api/pkmn", pkmnRoutes);
 app.use("/api/trainer", trainerRoutes);
+app.use("/api", docsRoutes);
+
+// Documentation Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const apiRouter = express.Router();
 app.use("/api", apiRouter);
@@ -33,3 +40,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = app;
