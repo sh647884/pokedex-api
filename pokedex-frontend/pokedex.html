@@ -9,13 +9,55 @@
 <body>
     <header>
         <h1>Pokédex</h1>
-        <button class="back-button" onclick="goBack()">Retour</button>
+        <div>
+            <button class="login-button" onclick="openLoginForm()">Connexion</button>
+            <button class="back-button" onclick="goBack()">Retour</button>
+        </div>
     </header>
+    
+    <!-- Formulaire de connexion / inscription -->
+    <div id="login-popup" class="popup-overlay" onclick="closeLoginForm(event)">
+        <div class="form-container" onclick="event.stopPropagation()">
+            <form id="login-form" class="form" onsubmit="login(event)">
+                <span class="heading">Connexion</span>
+                <div class="form-group">
+                    <input class="form-input" required="" type="text">
+                    <label>Nom d'utilisateur</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-input" required="" type="password">
+                    <label>Mot de passe</label>
+                </div>
+                <button type="submit">SE CONNECTER</button>
+                <p class="toggle-form">Vous n'avez pas encore de compte ? <span onclick="toggleForm()" class="toggle-link">Inscription</span></p>
+            </form>
+
+            <form id="register-form" class="form hidden" onsubmit="register(event)">
+                <span class="heading">Inscription</span>
+                <div class="form-group">
+                    <input class="form-input" required="" type="text">
+                    <label>Nom d'utilisateur</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-input" required="" type="email">
+                    <label>Email</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-input" required="" type="password">
+                    <label>Mot de passe</label>
+                </div>
+                <button type="submit">S'INSCRIRE</button>
+                <p class="toggle-form">Déjà un compte ? <span onclick="toggleForm()" class="toggle-link">Connexion</span></p>
+            </form>
+        </div>
+    </div>
+    
     <main>
         <div id="pokedex-container">
             <p>Chargement des Pokémon...</p>
         </div>
     </main>
     <script src="./js/script.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 </html>

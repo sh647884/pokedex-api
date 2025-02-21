@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
     "open": "^10.1.0"
   }
 }
