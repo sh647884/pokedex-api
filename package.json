@@ -2,9 +2,10 @@
   "name": "pokedex-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "cd pokedex-backend && npm run dev"
+    "dev": "concurrently \"cd pokedex-backend && npm run dev\" \"start pokedex-frontend/index.html\""
   },
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "open": "^10.1.0"
   }
 }

@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <h1>Bienvenue dans le Pokédex</h1>
-    <script src="js/script.js"></script>
+    <div class="home-container">
+        <video class="background-video" src="./assets/background.mp4" autoplay loop muted></video>
+        <div class="overlay">
+            <img src="./assets/logo.png" alt="Pokédex Logo" class="logo">
+            <p class="intro-text">Attrapez-les tous ! Découvrez et collectionnez tous les Pokémon du Pokédex.</p>
+            <button class="pokedex-button" onclick="openPokedex()">Ouvrir le Pokédex</button>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
